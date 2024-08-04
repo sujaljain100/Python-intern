@@ -1,0 +1,57 @@
+import random
+import os
+ 
+options=["stone", "paper", "scissor"]
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def play_game():
+    clear_screen()
+    print("="*50)
+    print("Welcome to the Rock-Paper-Scissors Game!")
+    print("="*50)
+    print("|-------------------------------|--------------------------------|")
+    while True:
+        comp = random.choice(options)
+        name=input("Enter Your Name: ")
+        
+        user = input(f" Hello {name}\n Please select  : (stone, paper, scissor) or type 'exit' to quit: ").lower()
+
+        if user == 'exit':
+            print("Thanks for playing! Goodbye!")
+            break
+
+        if user not in options:
+            print("Invalid input! Please choose stone, paper, or scissor.")
+            continue
+
+        clear_screen()
+        print(f"\nYou chose: {user.capitalize()}")
+        print(f"Computer chose: {comp.capitalize()}")
+
+        if comp == user:
+            print("It's a tie!")
+
+        elif user == "scissor":
+            if comp == "stone":
+                print("You lose! Stone smashes scissor.")
+            elif comp == "paper":
+                print("You win! Scissor cuts paper.")
+
+        elif user == "paper":
+            if comp == "stone":
+                print("You win! Paper wraps stone.")
+            elif comp == "scissor":
+                print("You lose! Scissor cuts paper.")
+
+        elif user == "stone":
+            if comp == "scissor":
+                print("You win! Stone smashes scissor.")
+            elif comp == "paper":
+                print("You lose! Paper wraps stone.")
+
+        print("\n")
+        input("Press Enter to play again...")
+        clear_screen()
+
+play_game()
