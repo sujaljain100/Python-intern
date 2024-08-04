@@ -1,0 +1,36 @@
+import os
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def play_guessing_game():
+    user1 = int(input("Select your number: "))
+    clear()
+
+    print("Welcome to the Number Guessing Game!")
+    print("Try to guess the number selected by the first player.")
+    print("Type 'exit' to quit the game.")
+
+    while True:
+        user2_input = input("\nEnter your number: ")
+
+        if user2_input.lower() == 'exit':
+            print("\nThanks for playing! Goodbye!")
+            break
+
+        try:
+            user2 = int(user2_input)
+
+            if user1 > user2:
+                print("Guess larger---")
+            elif user1 < user2:
+                print("Guess smaller---")
+            elif user1 == user2:
+                print("\nHurray, you win!")
+                break
+        except ValueError:
+            print("Invalid input! Please enter a number or type 'exit' to quit.")
+    
+    print("\n------------Thank you for playing!----------------")
+
+play_guessing_game()
